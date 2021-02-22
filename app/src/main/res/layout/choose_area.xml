@@ -26,6 +26,16 @@
         android:layout_centerVertical="true"
         android:background="@drawable/ic_launcher_foreground"
         />
+        <Button
+            android:id="@+id/frush_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="刷新"
+            android:background="@drawable/ic_launcher_foreground"
+            />
 
     </RelativeLayout>
 

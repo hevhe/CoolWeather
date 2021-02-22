@@ -61,11 +61,10 @@ public class Utilty {
                     County county=new County();
                     county.setContyName (cityObject.getString("name"));
                     county.setCityId(cityId);
-                    county.setWeatherId(cityObject.getInt("weather_id"));
+                    county.setWeatherId(cityObject.getString("weather_id"));
                     county.save();
                 }
                 return true;
-
             }catch (Exception e) {
                 e.printStackTrace();
             }
