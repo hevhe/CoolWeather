@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.coolweather.gson.Forecast;
 import com.example.coolweather.gson.Weather;
 import com.example.coolweather.unti.HttpUtil;
 import com.example.coolweather.unti.Utilty;
-
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -56,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity {
         sportText=this.findViewById(R.id.sport_text);
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString=prefs.getString("weather",null);
-        if(weatherString==null){
+        if(weatherString!=null){
             Weather weather= Utilty.handleWeatherResponse(weatherString);
             showWeatherInfo(weather);
         }else{
@@ -66,9 +62,8 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
-
     public void requestWeather(final String weatherId){
-        String weatherUrl="http://guolin.tech/api/weather?cityid="+weatherId+"&key=12341231231";
+        String weatherUrl="https://www.tianqiapi.com/api?version=v5&appid=96464641&appsecret=2KJkY9fI&city="+weatherId;
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -85,6 +80,7 @@ public class WeatherActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseText=response.body().string();
                 final Weather weather=Utilty.handleWeatherResponse(responseText);
+                System.out.println("响应结果："+responseText);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

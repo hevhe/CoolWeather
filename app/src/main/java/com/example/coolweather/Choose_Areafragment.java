@@ -85,7 +85,7 @@ public class Choose_Areafragment extends Fragment {
                     selectCity=cityList.get(position);
                     queryCountys();
                 }else if(currentLevel==LEVER_COUNTY){
-                    String weatherId=countyList.get(position).getWeatherId();
+                    String weatherId=countyList.get(position).getContyName();
                     Intent intent=new Intent(getActivity(),WeatherActivity.class);
                     intent.putExtra("weather_id",weatherId);
                     startActivity(intent);
