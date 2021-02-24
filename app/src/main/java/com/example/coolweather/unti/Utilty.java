@@ -77,7 +77,7 @@ public class Utilty {
 
     public static Weather handleWeatherResponse(String response){
         try{
-            JSONObject jsonObject=new JSONObject(response);
+            System.out.println(response);
             return new Gson().fromJson(response,Weather.class);
         }catch (Exception ex){
             ex.printStackTrace();
